@@ -12,7 +12,6 @@ namespace Task2Nix
         {
             string connectionString = @"Data Source=DESKTOP-RPNK5SQ\SQLEXPRESS;Initial Catalog=task2db;Integrated Security=True";
             DataContext dataContext = new DataContext(connectionString);
-
             try
             {
                 Table<User> users = dataContext.GetTable<User>();
@@ -28,8 +27,6 @@ namespace Task2Nix
             {
                 throw new Exception("Error");
             }
-
-            
         }
 
         static void GetAllData(Table<User> users)
