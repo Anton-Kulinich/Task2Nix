@@ -12,29 +12,21 @@ namespace Task2Nix
         {
             string connectionString = @"Data Source=DESKTOP-RPNK5SQ\SQLEXPRESS;Initial Catalog=task2db;Integrated Security=True";
             DataContext dataContext = new DataContext(connectionString);
-            try
-            {
-                Table<User> users = dataContext.GetTable<User>();
-                var query = from u in users where u.Age > 20 orderby u.Name select u;
-                GetAllData(users);
-                Console.WriteLine(new string('*',20));
-                foreach(var u in query)
+            
+            
+                Table<CarpReel> carpReels = dataContext.GetTable<CarpReel>();
+                Table<FeederReel> feederReels = dataContext.GetTable<FeederReel>();
+                Table<SpinReel> spinReels = dataContext.GetTable<SpinReel>();
+                var query = from r in carpReels where r.Price < 2000 orderby r.Price select r;
+                foreach(var item in query)
                 {
-                    Console.WriteLine($"{u.Id} {u.Name} {u.Age}");
+                    Console.WriteLine($"{item.Manufacturer} {item.Manufacturer} {item.Price}");
                 }
-            }
-            catch(Exception ex)
-            {
-                throw new Exception("Error");
-            }
+            
+            
         }
 
-        static void GetAllData(Table<User> users)
-        {
-            foreach(var u in users)
-            {
-                Console.WriteLine($"{u.Id} {u.Name} {u.Age}");
-            }
-        }
+
+        
     }
 }
