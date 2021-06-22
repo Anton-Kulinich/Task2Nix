@@ -8,8 +8,20 @@ using System.Threading.Tasks;
 namespace Task2Nix
 {
     [Table(Name = "SpinReel")]
-    public class SpinReel : FishingProduct, IReel
+    public class SpinReel
     {
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id { get; set; }
+        [Column]
+        public int Price { get; set; }
+        [Column]
+        public string Manufacturer { get; set; }
+        [Column]
+        public string Description { get; set; }
+        [Column]
+        public string ProductName { get; set; }
+        [Column]
+        public string CategoryName { get; set; }
         [Column]
         public int BallBearings { get; set; }
         [Column]
@@ -19,28 +31,21 @@ namespace Task2Nix
         [Column]
         public int Weight { get; set; }
 
-        public SpinReel(string name, string category, string manufacturer, int price, string description, int bb, int size, string linecapacity, int weight) : base(name, category, manufacturer, price, description)
+        public SpinReel(string name, string category, string manufacturer, int price, string description, int bb, int size, string linecapacity, int weight)
         {
+            ProductName = name;
+            CategoryName = category;
+            Manufacturer = manufacturer;
+            Price = price;
+            Description = description;
             BallBearings = bb;
             Size = size;
             LineCapacity = linecapacity;
             Weight = weight;
         }
-
-        public override void ProductInfo()
+        public SpinReel()
         {
-            base.ProductInfo();
-            Console.WriteLine($"Ball bearings: {BallBearings}\n" +
-                $"Size: {Size}\n" +
-                $"Line capacity: {LineCapacity} mm/m\n" +
-                $"Weight: {Weight}g");
-        }
 
-        public override void ShortDesc()
-        {
-            base.ShortDesc();
-            Console.WriteLine($"Size : {Size}");
         }
-
     }
 }

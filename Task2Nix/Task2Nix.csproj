@@ -49,16 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\FishingProduct.cs" />
     <Compile Include="Models\FishingsReels\CarpReel.cs" />
     <Compile Include="Models\FishingsReels\FeederReel.cs" />
     <Compile Include="Models\FishingsReels\SpinReel.cs" />
-    <Compile Include="Models\Interfaces\IReel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Result.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

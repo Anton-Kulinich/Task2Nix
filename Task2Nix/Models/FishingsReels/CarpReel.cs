@@ -9,8 +9,20 @@ using System.Xml.Serialization;
 namespace Task2Nix
 {
     [Table(Name ="CarpReel")]
-    public class CarpReel : FishingProduct, IReel
+    public class CarpReel
     {
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id { get; set; }
+        [Column]
+        public int Price { get; set; }
+        [Column]
+        public string Manufacturer { get; set; }
+        [Column]
+        public string Description { get; set; }
+        [Column]
+        public string ProductName { get; set; }
+        [Column]
+        public string CategoryName { get; set; }
         [Column]
         public int BallBearings { get; set; }
         [Column]
@@ -20,8 +32,13 @@ namespace Task2Nix
         [Column]
         public int Weight { get; set; }
 
-        public CarpReel(string name, string category, string manufacturer, int price, string description, int bb, int size, string linecapacity, int weight) : base(name, category, manufacturer, price, description)
+        public CarpReel(string name, string category, string manufacturer, int price, string description, int bb, int size, string linecapacity, int weight)
         {
+            ProductName = name;
+            CategoryName = category;
+            Manufacturer = manufacturer;
+            Price = price;
+            Description = description;
             BallBearings = bb;
             Size = size;
             LineCapacity = linecapacity;
@@ -31,21 +48,5 @@ namespace Task2Nix
         {
 
         }
-
-        public override void ProductInfo()
-        {
-            base.ProductInfo();
-            Console.WriteLine($"Ball bearings: {BallBearings}\n" +
-                $"Size: {Size}\n" +
-                $"Line capacity: {LineCapacity} mm/m\n" +
-                $"Weight: {Weight}g");
-        }
-
-        public override void ShortDesc()
-        {
-            base.ShortDesc();
-            Console.WriteLine($"Size : {Size}");
-        }
-
     }
 }
